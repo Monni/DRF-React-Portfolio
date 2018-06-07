@@ -15,16 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from rest_framework.routers import SimpleRouter
 
 from backend.views import ProjectViewset, EventViewset, EducationViewset
-
-
-class APIRouter(SimpleRouter):  # TODO move to another file
-    def __init__(self):
-        self.trailing_slash = '/?'
-        super(SimpleRouter, self).__init__()
-
+from portfolio.utils.router import APIRouter
 
 router = APIRouter()
 
