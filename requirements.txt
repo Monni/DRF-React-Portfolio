@@ -1,0 +1,5 @@
+django==2.0.6
+djangorestframework==3.8.2
+djangorestframework_jsonapi==2.4.0
+Pillow==5.1.0
+markdown==2.6.11
