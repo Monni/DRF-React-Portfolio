@@ -41,11 +41,11 @@ class Document(Media):
 
 
 class AbstractActivity(models.Model):
+    # TODO video
     location = models.CharField(max_length=64)
     tags = GenericRelation(Tag)
     images = GenericRelation(Image)
     documents = GenericRelation(Document)
-    # TODO video
 
     class Meta:
         abstract = True
@@ -88,3 +88,20 @@ class Education(AbstractActivity):
     period_start = models.DateField()
     period_end = models.DateField(null=True, blank=True)
     type = models.CharField(max_length=3, choices=TYPE_CHOICES, null=False, blank=False)  # TODO check choices
+
+
+class Career(AbstractActivity):
+    # TODO should I have a relation with projects?
+
+    WORK = 'WORK'
+    OTHER = 'OTHER'
+    TYPE_CHOICES = (
+        (WORK, 'Work'),
+        (OTHER, 'Other')
+    )
+
+    name = models.CharField(max_length=64)
+    description = models.TextField()
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
+    type = models.CharField(max_length=3, choices=TYPE_CHOICES)
