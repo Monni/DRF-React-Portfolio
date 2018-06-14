@@ -40,7 +40,7 @@ class Document(Media):
                             validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
 
 
-class AbstractBaseModel(models.Model):  # TODO rename?
+class AbstractActivity(models.Model):
     location = models.CharField(max_length=64)
     tags = GenericRelation(Tag)
     images = GenericRelation(Image)
@@ -57,7 +57,7 @@ class AbstractBaseModel(models.Model):  # TODO rename?
             key=lambda media: media.date, reverse=False)
 
 
-class Event(AbstractBaseModel):
+class Event(AbstractActivity):
     name = models.CharField(max_length=64)
     description = models.TextField()
     date = models.DateTimeField()
@@ -67,14 +67,14 @@ class Event(AbstractBaseModel):
         return '{} ({})'.format(self.name, self.placement)
 
 
-class Project(AbstractBaseModel):
+class Project(AbstractActivity):
     name = models.CharField(max_length=64)
     title = models.CharField(max_length=255)
     description = models.TextField()
     events = models.ManyToManyField(Event, related_name='projects')
 
 
-class Education(AbstractBaseModel):
+class Education(AbstractActivity):
     EDUCATION = 'EDU'
     CERTIFICATE = 'CRT'
     TYPE_CHOICES = (
