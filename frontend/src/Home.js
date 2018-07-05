@@ -3,17 +3,36 @@ import React, { Component } from "react";
 class Home extends Component {
   render() {
     return (
-      <div>
-        <h2>HELLO</h2>
-        <p>Cras facilisis urna ornare ex volutpat, et
-        convallis erat elementum. Ut aliquam, ipsum vitae
-        gravida suscipit, metus dui bibendum est, eget rhoncus nibh
-        metus nec massa. Maecenas hendrerit laoreet augue
-        nec molestie. Cum sociis natoque penatibus et magnis
-        dis parturient montes, nascetur ridiculus mus.</p>
- 
-        <p>Duis a turpis sed lacus dapibus elementum sed eu lectus.</p>
-      </div>
+                <section class="module">
+                    <div class="container-fluid container-custom">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h6>Services.</h6>
+                            </div>
+                            <div class="col-sm-8">
+                                <p>Exercitation photo booth stumptown tote bag Banksy, elit small batch freegan sed. Craft beer elit seitan exercitation, photo booth et 8-bit kale chips proident chillwave deep v laborum.</p>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <ul class="service-list">
+                                            <li>Digital Strategy</li>
+                                            <li>Software Development</li>
+                                            <li>Content Direction</li>
+                                            <li>Interaction Design</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="service-list">
+                                            <li>Websites & Apps</li>
+                                            <li>Responsive Design</li>
+                                            <li>Digital Marketing</li>
+                                            <li>User Experience</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
     );
   }
 }
