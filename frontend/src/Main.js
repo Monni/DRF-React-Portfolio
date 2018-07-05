@@ -9,6 +9,7 @@ import Home from "./Home";
 import Stuff from "./Stuff";
 import Contact from "./Contact";
 import MainStyles from "./css/main.css";
+import MainMenu from "./Menu.js";
 
  
 class Main extends Component {
@@ -19,11 +20,16 @@ class Main extends Component {
 				{/*Large image on the left, split content*/}
 				<div className={MainStyles.wrapper_split_image}>
 					<h3>Foo</h3>
-
 				</div>
 
 				{/*Content on the right, split content*/}
 				<div className={MainStyles.wrapper_split_content}>
+
+					<MainMenu/>
+
+					<div className="content">
+						<Route exact path="/" component={Home}/>
+					</div>
 
 					<footer className={ MainStyles.footer }>
 						<div className={ MainStyles.container_fluid }>
@@ -48,12 +54,7 @@ class Main extends Component {
 										</li>
 										<li>
 											<a href="#">
-												<i className="fa fa-google-plus"/>
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i className="fa fa-linkedin"/>
+												<FontAwesome name="linkedin"/>
 											</a>
 										</li>
 									</ul>
