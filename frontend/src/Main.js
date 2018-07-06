@@ -5,9 +5,18 @@ import Home from "./Home";
 import Projects from "./Projects";
 import MainStyles from "./css/main.css";
 import MainMenu from "./Menu.js";
+import ImageLoader from "./ImageLoader.js";
 
  
 export default class Main extends Component {
+
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            imageUrl: null
+        };
+    }
+
 	render() {
 		return (
 			<div className={MainStyles.wrapper}>
@@ -15,6 +24,7 @@ export default class Main extends Component {
 				{/*Large image on the left, split content*/}
 				<div className={MainStyles.wrapper_split_image}>
 					<h3>Foo</h3>
+					<ImageLoader imageUrl={this.state.imageUrl}/>
 				</div>
 
 				{/*Content on the right, split content*/}
