@@ -1,13 +1,8 @@
 import React, { Component } from "react";
 import FontAwesome from "react-fontawesome";
-import {
-  Route,
-  NavLink,
-  HashRouter
-} from "react-router-dom";
+import { Route } from "react-router-dom";
 import Home from "./Home";
 import Projects from "./Projects";
-import Contact from "./Contact";
 import MainStyles from "./css/main.css";
 import MainMenu from "./Menu.js";
 
