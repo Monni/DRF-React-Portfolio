@@ -6,7 +6,7 @@ import {
   HashRouter
 } from "react-router-dom";
 import Home from "./Home";
-import Stuff from "./Stuff";
+import Projects from "./Projects";
 import Contact from "./Contact";
 import MainStyles from "./css/main.css";
 import MainMenu from "./Menu.js";
@@ -29,6 +29,7 @@ class Main extends Component {
 
 					<div className="content">
 						<Route exact path="/" component={Home}/>
+						<Route path="/projects" component={Projects}/>
 					</div>
 
 					<footer className={ MainStyles.footer }>

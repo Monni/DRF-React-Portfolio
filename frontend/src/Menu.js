@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
 import { slide as Menu } from 'react-burger-menu';
 
 const styles = {
@@ -47,8 +48,8 @@ export default class MainMenu extends React.Component {
   render () {
     return (
       <Menu styles={ styles } right width="50%">
-          <a key="0" href=""><i className="fa fa-fw fa-star-o" /><span>Home</span></a>
-          <a key="1" href=""><i className="fa fa-fw fa-mortar-board" /><span>About</span></a>
+          <NavLink to={"/"}><i className="fa fa-fw fa-star-o" /><span>Home</span></NavLink>
+          <NavLink to={"/projects"}><i className="fa fa-fw fa-mortar-board" /><span>Projects</span></NavLink>
           <a key="2" href=""><i className="fa fa-fw fa-envelope-o" /><span>Contact</span></a>
           <a key="3" href=""><i className="fa fa-fw fa-database" /><span>Something</span></a>
           <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
