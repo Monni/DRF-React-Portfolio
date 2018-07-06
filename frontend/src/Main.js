@@ -7,7 +7,7 @@ import MainStyles from "./css/main.css";
 import MainMenu from "./Menu.js";
 
  
-class Main extends Component {
+export default class Main extends Component {
 	render() {
 		return (
 			<div className={MainStyles.wrapper}>
@@ -62,6 +62,4 @@ class Main extends Component {
 
     );
   }
-}
- 
-export default Main;
+};
