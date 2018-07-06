@@ -33,7 +33,7 @@ class Main extends Component {
 					</div>
 
 					<footer className={ MainStyles.footer }>
-						<div className={ MainStyles.container_fluid }>
+						<div className={ MainStyles.container_fluid +" "+ MainStyles.container_custom }>
 							<div className={ MainStyles.row }>
 
 								<div className={ MainStyles.col_md_7}>

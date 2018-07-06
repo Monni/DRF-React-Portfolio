@@ -66,13 +66,37 @@
     padding-left: 15px;
 }
 
- .col-md-7 {
-     width: 58.33333333%;
-     position: relative;
-     min-height: 1px;
-     padding-right: 15px;
-     padding-left: 15px;
-  }
+.col_md_7 {
+    width: 58.33333333%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col_sm_12 {
+    width: 100%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col_sm_4 {
+    width: 33.33333333%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col_sm_8 {
+    width: 66.66666667%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
 
 .row {
     margin-right: -15px;
