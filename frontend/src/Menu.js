@@ -41,18 +41,22 @@ const styles = {
 };
 
 export default class MainMenu extends React.Component {
-  showSettings (event) {
-    event.preventDefault();
+
+  constructor(props) {
+    super(props);
+    this.state = {isOpen: false};
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick (event) {
+    this.setState({isOpen: false})
   }
 
   render () {
     return (
-      <Menu styles={ styles } right width="50%">
-          <NavLink to={"/"}><i className="fa fa-fw fa-star-o" /><span>Home</span></NavLink>
-          <NavLink to={"/projects"}><i className="fa fa-fw fa-mortar-board" /><span>Projects</span></NavLink>
-          <a key="2" href=""><i className="fa fa-fw fa-envelope-o" /><span>Contact</span></a>
-          <a key="3" href=""><i className="fa fa-fw fa-database" /><span>Something</span></a>
-          <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
+      <Menu isOpen={ this.state.isOpen } styles={ styles } right width="50%">
+          <NavLink to={"/"} onClick={ this.handleClick }><i className="fa fa-fw fa-star-o" /><span>Home</span></NavLink>
+          <NavLink to={"/projects"} onClick={ this.handleClick }><i className="fa fa-fw fa-mortar-board" /><span>Projects</span></NavLink>
       </Menu>
     );
   }
