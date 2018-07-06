@@ -45,6 +45,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 10px;
+    display: block;
     /*padding: 25px 40px 5px;*/
     /*margin: 50px -40px 0;*/
 }
@@ -101,6 +102,17 @@
 .row {
     margin-right: -15px;
     margin-left: -15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.row:before {
+    display: table;
+    content: " ";
+}
+
+.row:after {
+    clear: both;
 }
 
 .container_fluid {

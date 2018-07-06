@@ -38,7 +38,6 @@ class Main extends Component {
 
 								<div className={ MainStyles.col_md_7}>
 									<p>© 2018 Miika Avela. All rights reserved</p>
-
 								</div>
 
 								<div className={ MainStyles.col_md_5}>
