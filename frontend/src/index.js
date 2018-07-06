@@ -7,6 +7,7 @@ import "./bootstrap/css/bootstrap.min.css";
 import "./css/magnific-popup.css";
 import "./css/vertical.min.css";
 import "./css/template.css";
+import "./css/typography.css";
 
 ReactDOM.render((
     <HashRouter>
