@@ -1,7 +1,7 @@
 import React from "react";
 import Spinner from "./Spinner";
-import { spinnerService } from "./spinner.service";
-import loadingGif from "./assets/img/loader.gif";
+import { spinnerService } from "./services/spinner.service";
+import loadingGif from "./img/loader.gif";
 import styles from "./css/imageloader.css";
 
 
