@@ -23,8 +23,7 @@ export default class Main extends Component {
 
 				{/*Large image on the left, split content*/}
 				<div className={MainStyles.wrapper_split_image}>
-					<h3>Foo</h3>
-					<ImageLoader imageUrl={this.state.imageUrl}/>
+					<ImageLoader className={MainStyles.wrapper_split_image} imageUrl={this.state.imageUrl}/>
 				</div>
 
 				{/*Content on the right, split content*/}

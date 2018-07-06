@@ -1,6 +1,8 @@
 import React from "react";
 import Spinner from "./Spinner";
 import { spinnerService } from "./spinner.service";
+import loadingGif from "./assets/img/loader.gif";
+import styles from "./css/imageloader.css";
 
 
 export default class ImageLoader extends React.Component {
@@ -12,6 +14,7 @@ export default class ImageLoader extends React.Component {
             imageFailed: false
         };
         this.spinnerName = 'ImageLoader';
+        this.initialState = this.state;
     }
 
     componentDidMount() {
@@ -23,6 +26,7 @@ export default class ImageLoader extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         if (prevProps !== this.props && !spinnerService.isShowing(this.spinnerName)) {
             spinnerService.show(this.spinnerName);
+            this.setState(this.initialState);
         } else if (
             prevState !== this.state && this.state.imageLoaded && spinnerService.isShowing(this.spinnerName)) {
             spinnerService.hide(this.spinnerName);
@@ -39,16 +43,14 @@ export default class ImageLoader extends React.Component {
 
     render() {
         const { imageUrl } = this.props;
+
         return (
-            <div>
+            <div className={styles.imageloader}>
+                <Spinner className={styles.spinner} name={ this.spinnerName } group="SplitImage" loadingImage={ loadingGif }/>
                 <img src={ imageUrl }
                      onLoad={ this.handleImageLoaded.bind(this) }
                      onError={ this.handleImageFailed.bind(this) }
-                     style={ this.state.imageLoaded ? {visibility: 'visible'} : {visibility: 'hidden'}} />
-
-                <Spinner name={ this.spinnerName } group="SplitImage">
-                    <h1>Loading...</h1>
-                </Spinner>
+                     style={ this.state.imageLoaded ? {display: 'block'} : {display: 'none'}} />
             </div>
         )
     }

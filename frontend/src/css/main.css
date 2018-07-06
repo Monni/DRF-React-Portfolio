@@ -1,18 +1,15 @@
-.wrapper{
+.wrapper {
     height: 100vh;
     display: flex;
     flex-direction: row;
     border-width: 5px;
     border-color: #0b0b0b;
 }
-.wrapper_split_image{
+.wrapper_split_image {
     width: 50%;
     height: 100%;
-    background-position: 50% 0;
-    border: #0f0f0f;
-    border-width: 5px;
 }
-.wrapper_split_content{
+.wrapper_split_content {
     width: 50%;
     min-height: 100%;
     border: #0f0f0f;

@@ -1,0 +1,10 @@
+.imageloader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.spinner {
+    vertical-align: middle;
+    text-align:center;
+}

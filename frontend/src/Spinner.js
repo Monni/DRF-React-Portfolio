@@ -40,18 +40,17 @@ export default class Spinner extends React.Component {
     }
 
     render() {
-        let divStyle = { display: 'inline-block' };
         if (this.state.show) {
             const { loadingImage } = this.props;
             return (
-                <div style={divStyle}>
+                <div>
                     { loadingImage && <img src={loadingImage} /> }
                     { this.props.children }
                     </div>
             );
         }
         return (
-            <div style={divStyle}/>
+            <div/>
         );
     }
 }
