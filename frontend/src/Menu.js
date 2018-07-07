@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 import { slide as Menu } from 'react-burger-menu';
+import MainStyles from "./css/main.css";
 
 const styles = {
   bmBurgerButton: {
@@ -30,7 +31,11 @@ const styles = {
   },
   bmItemList: {
     color: '#b8b7ad',
-    padding: '0.8em'
+    padding: '0.8em',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   bmItem: {
     display: 'block'
