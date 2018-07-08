@@ -1,0 +1,29 @@
+/*------------------------------------------------------------------
+[Resume]
+*/
+
+.resumeInfo {
+    list-style: none;
+    padding: 0;
+}
+
+.resumeInfo > li {
+    border-bottom: 1px solid #eee;
+    padding: 0 0 20px;
+    margin: 0 0 40px;
+}
+
+.resumeInfo > li:last-child {
+    border: 0;
+}
+
+.resumeInfo .resumeMeta,
+.resumeInfo .resumeTitle {
+    margin: 0 0 10px;
+}
+
+.resumeInfo .resumeMeta {
+    font-size: 15px;
+    color: #898989;
+    opacity: 0.6;
+}

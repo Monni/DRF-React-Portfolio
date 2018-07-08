@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import MainStyles from "./css/main.css";
-import styles from "./css/home.css";
  
 export default class Home extends Component {
     render() {
         return (
             <div>
                 {/* Hello Text */}
-                <section className={ styles.module }>
+                <section className={ MainStyles.module }>
                     <div className={ MainStyles.container_fluid +" "+ MainStyles.container_custom }>
                         <div className={ MainStyles.row }>
                             <div className={ MainStyles.col_sm_12 }>
@@ -21,7 +20,7 @@ export default class Home extends Component {
                 </section>
 
                 {/* Personal Details */}
-                <section className={ styles.module }>
+                <section className={ MainStyles.module }>
                     <div className={ MainStyles.container_fluid +" "+ MainStyles.container_custom }>
                         <div className={ MainStyles.row }>
                             <div className={ MainStyles.col_sm_4 }>

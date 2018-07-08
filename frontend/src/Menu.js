@@ -48,7 +48,7 @@ export default class MainMenu extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {isOpen: false};
+        this.state = { isOpen: false };
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -60,6 +60,7 @@ export default class MainMenu extends React.Component {
         return (
             <Menu isOpen={ this.state.isOpen } styles={ styles } right width="50%">
                 <NavLink to={"/"} onClick={ this.handleClick }><i className="fa fa-fw fa-star-o" /><span>Home</span></NavLink>
+                <NavLink to={"/experience"} onClick={ this.handleClick }><span>Education & Experience</span></NavLink>
                 <NavLink to={"/projects"} onClick={ this.handleClick }><i className="fa fa-fw fa-mortar-board" /><span>Projects</span></NavLink>
             </Menu>
         );

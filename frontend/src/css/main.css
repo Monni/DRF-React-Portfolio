@@ -122,3 +122,12 @@
 .container_custom {
     max-width: 768px;
 }
+
+.module {
+    background-color: #ffffff;
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding: 50px 0;
+}

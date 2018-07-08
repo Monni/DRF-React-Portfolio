@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import FontAwesome from "react-fontawesome";
 import { Route } from "react-router-dom";
 import Home from "./Home";
+import Resume from "./Resume";
 import Projects from "./Projects";
 import MainStyles from "./css/main.css";
 import MainMenu from "./Menu.js";
@@ -33,6 +34,7 @@ export default class Main extends Component {
 
 					<div className="content">
 						<Route exact path="/" component={Home}/>
+						<Route path="/experience" component={Resume}/>
 						<Route path="/projects" component={Projects}/>
 					</div>
 
