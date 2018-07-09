@@ -1,6 +1,7 @@
 import React from "react";
 import MainStyles from "./css/main.css";
 import styles from "./css/resume.css";
+import ResumeLoader from "./api/resume";
 
 export default class Resume extends React.Component {
 
@@ -31,6 +32,10 @@ export default class Resume extends React.Component {
                             </div>
 
                             {/* TODO this needs to be a dynamic component fetching info from DB */}
+
+                            <div>
+                                <ResumeLoader type='education'/>
+                            </div>
 
                             <div className={ MainStyles.col_sm_8 }>
                                 <ul className={ styles.resumeInfo }>

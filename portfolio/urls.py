@@ -13,8 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from backend.views import ProjectViewset, EventViewset, EducationViewset
 from portfolio.utils.router import APIRouter
@@ -28,8 +29,7 @@ router.register('events', EventViewset)
 
 router.register('education', EducationViewset)
 
-urlpatterns = router.urls
-urlpatterns += [
-    path('admin/', admin.site.urls),
-
+urlpatterns = [
+    url('admin/', admin.site.urls),
+    url(r'^api/', include(router.urls)),
 ]
