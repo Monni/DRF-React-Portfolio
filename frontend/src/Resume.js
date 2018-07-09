@@ -23,6 +23,10 @@ export default class Resume extends React.Component {
                     </div>
                 </section>
 
+                <div>
+                    <ResumeLoader type='education' subType='EDU'/>
+                </div>
+
                 {/* Education */}
                 <section className={ MainStyles.module }>
                     <div className={ [MainStyles.container_fluid, MainStyles.container_custom].join(' ') }>
@@ -33,9 +37,7 @@ export default class Resume extends React.Component {
 
                             {/* TODO this needs to be a dynamic component fetching info from DB */}
 
-                            <div>
-                                <ResumeLoader type='education'/>
-                            </div>
+
 
                             <div className={ MainStyles.col_sm_8 }>
                                 <ul className={ styles.resumeInfo }>
