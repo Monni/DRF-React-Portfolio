@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include
 
-from backend.views import ProjectViewset, EventViewset, EducationViewset
+from backend.views import ProjectViewset, EventViewset, EducationViewset, CareerViewSet
 from portfolio.utils.router import APIRouter
 
 router = APIRouter()
@@ -28,6 +28,7 @@ router.register('projects', ProjectViewset)
 router.register('events', EventViewset)
 
 router.register('education', EducationViewset)
+router.register('career', CareerViewSet)
 
 urlpatterns = [
     url('admin/', admin.site.urls),
