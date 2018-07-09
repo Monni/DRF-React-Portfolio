@@ -104,4 +104,4 @@ class Career(AbstractActivity):
     description = models.TextField()
     start_date = models.DateField()
     end_date = models.DateField()
-    type = models.CharField(max_length=3, choices=TYPE_CHOICES)
+    type = models.CharField(max_length=5, choices=TYPE_CHOICES)
