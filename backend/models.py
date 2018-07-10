@@ -112,7 +112,7 @@ class PageContent(models.Model):
         (TITLE, 'Title')
     )
 
-    page_name = models.CharField(max_length=6)
+    page_name = models.CharField(max_length=6, choices=PAGE_NAME_CHOICES)
     title = models.CharField(max_length=255)  # 256 Bytes
     content = models.TextField(max_length=65535)  # 64 Kilobytes
     type = models.CharField(max_length=10, choices=TYPE_CHOICES)
