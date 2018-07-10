@@ -98,6 +98,13 @@ class Career(AbstractActivity):
 # TODO Probably need to add relationships to images at least. If, serializer update needed.
 class PageContent(models.Model):
 
+    HOME = 'HOME',
+    RESUME = 'RESUME'
+    PAGE_NAME_CHOICES = (
+        (HOME, 'Home'),
+        (RESUME, 'Title')
+    )
+
     CONTENT = 'CONTENT'
     TITLE = 'TITLE'
     TYPE_CHOICES = (
@@ -105,6 +112,7 @@ class PageContent(models.Model):
         (TITLE, 'Title')
     )
 
+    page_name = models.CharField(max_length=6)
     title = models.CharField(max_length=255)  # 256 Bytes
     content = models.TextField(max_length=65535)  # 64 Kilobytes
     type = models.CharField(max_length=10, choices=TYPE_CHOICES)
