@@ -1,9 +1,43 @@
 import React from "react";
 import MainStyles from "./css/main.css";
 import styles from "./css/resume.css";
-import ResumeLoader from "./api/resume";
+import ResumeLoader from "./dataloaders/resume";
+import API from "./api/base";
 
 export default class Resume extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            response: [],
+            WRK: [],
+            EDU: [],
+            CRT: [],
+            OTH: [],
+            error: false
+        }
+    }
+    // TODO check initial states. Looks oddish.
+
+    componentDidMount(){
+        API.get('career').then(response => this.handleSuccess(response).bind(this)
+        ).catch(error => this.handleError(error).bind(this))
+    }
+
+    handleSuccess(response) {
+        console.log(response);
+        this.setState({ response: response });
+        response.data.map(data => {
+            let dataArray = this.state[data.type].slice();
+            dataArray.push(data);
+            this.setState({ [data.type]: dataArray});
+        })
+    }
+
+    handleError(error) {
+        console.log(error);
+        this.setState({error: true});
+    }
 
     render() {
         return (
@@ -22,12 +56,13 @@ export default class Resume extends React.Component {
                         </div>
                     </div>
                 </section>
+                {!this.state.data.length > 0 && this.state.error && <p>I have failed in life. Or just an API error</p>}
 
                 {/* Education */}
-                <ResumeLoader type='education' subType='EDU'/>
+                <ResumeLoader data={ this.state.EDU }/>
 
                 {/* Work Experience */}
-                <ResumeLoader type='career' subType='WORK'/>
+                <ResumeLoader data={ this.state.WRK }/>
 
                 {/* TODO here fetch skills as buzzwords from LinkedIn. (Or DB? Do I need a table for that?) */}
                 <section className={ MainStyles.module }>
