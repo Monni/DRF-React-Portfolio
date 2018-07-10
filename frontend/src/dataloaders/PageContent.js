@@ -40,10 +40,9 @@ export default class PageContentLoader extends React.Component {
     }
 
     render() {
-        const sortedContentData = [].concat(this.state.contentData).sort((a, b) => a.display_order < b.display_order);
-        // TODO Figure these page content thingies later. Should this be only Titleloader?
         return (
-            this.state.titleData.map(((data, index) =>
+            <div>
+                {this.state.titleData.map(((data, index) =>
                     <section key={index} className={ MainStyles.module }>
                         <div className={ [MainStyles.container_fluid, MainStyles.container_custom].join(' ') }>
                             <div className={ MainStyles.row }>
@@ -53,7 +52,19 @@ export default class PageContentLoader extends React.Component {
                                 </div>
                             </div>
                         </div>
-                    </section>))
+                    </section>))}
+                {this.state.contentData.sort((a, b) => a.display_order < b.display_order).map(((data, index) =>
+                    <section key={index} className={ MainStyles.module }>
+                        <div className={ [MainStyles.container_fluid, MainStyles.container_custom].join(' ') }>
+                            <div className={ MainStyles.row }>
+                                <div className={ MainStyles.col_sm_12 }>
+                                    <h1>{ data.title }</h1>
+                                    <p>{ data.content }</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>))}
+            </div>
         )
     }
 }
