@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import include
 
-from backend.views import ProjectViewset, EventViewset, CareerViewSet
+from backend.views import ProjectViewset, EventViewset, CareerViewSet, PageContentViewSet
 from portfolio.utils.router import APIRouter
 
 router = APIRouter()
@@ -27,6 +27,7 @@ router.register('projects', ProjectViewset)
 
 router.register('events', EventViewset)
 router.register('career', CareerViewSet)
+router.register('content', PageContentViewSet)
 
 urlpatterns = [
     url('admin/', admin.site.urls),

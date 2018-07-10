@@ -95,6 +95,7 @@ class Career(AbstractActivity):
     type = models.CharField(max_length=3, choices=TYPE_CHOICES)
 
 
+# TODO Probably need to add relationships to images at least. If, serializer update needed.
 class PageContent(models.Model):
 
     CONTENT = 'CONTENT'

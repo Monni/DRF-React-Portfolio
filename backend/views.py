@@ -5,8 +5,8 @@ from django.utils.functional import cached_property
 from rest_framework import viewsets
 from rest_framework.exceptions import ValidationError
 
-from backend.models import Project, Event, Career
-from backend.serializers import ProjectSerializer, EventSerializer, CareerSerializer
+from backend.models import Project, Event, Career, PageContent
+from backend.serializers import ProjectSerializer, EventSerializer, CareerSerializer, PageContentSerializer
 
 
 class ProjectViewset(viewsets.ModelViewSet):
@@ -29,3 +29,8 @@ class EventViewset(viewsets.ModelViewSet):
 class CareerViewSet(viewsets.ModelViewSet):
     queryset = Career.objects
     serializer_class = CareerSerializer
+
+
+class PageContentViewSet(viewsets.ModelViewSet):
+    queryset = PageContent.objects
+    serializer_class = PageContentSerializer
