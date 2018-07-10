@@ -27,7 +27,7 @@ router.register('projects', ProjectViewset)
 
 router.register('events', EventViewset)
 router.register('career', CareerViewSet)
-router.register('content', PageContentViewSet)
+router.register('content(?:/(?P<page_name>[a-zA-Z]+)/)?', PageContentViewSet, base_name='pagecontent')
 
 urlpatterns = [
     url('admin/', admin.site.urls),

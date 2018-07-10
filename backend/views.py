@@ -32,5 +32,9 @@ class CareerViewSet(viewsets.ModelViewSet):
 
 
 class PageContentViewSet(viewsets.ModelViewSet):
-    queryset = PageContent.objects
     serializer_class = PageContentSerializer
+
+    def get_queryset(self):
+        if self.kwargs.get('page_name'):
+            return PageContent.objects.filter(page_name=self.kwargs['page_name'])
+        return PageContent.objects
