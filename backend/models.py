@@ -93,3 +93,18 @@ class Career(AbstractActivity):
     start_date = models.DateField()
     end_date = models.DateField(null=True, blank=True)
     type = models.CharField(max_length=3, choices=TYPE_CHOICES)
+
+
+class PageContent(models.Model):
+
+    CONTENT = 'CONTENT'
+    TITLE = 'TITLE'
+    TYPE_CHOICES = (
+        (CONTENT, 'Content'),
+        (TITLE, 'Title')
+    )
+
+    title = models.CharField(max_length=255)  # 256 Bytes
+    content = models.TextField(max_length=65535)  # 64 Kilobytes
+    type = models.CharField(max_length=10, choices=TYPE_CHOICES)
+    display_order = models.IntegerField()
