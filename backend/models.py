@@ -74,34 +74,22 @@ class Project(AbstractActivity):
     events = models.ManyToManyField(Event, related_name='projects')
 
 
-class Education(AbstractActivity):
-    EDUCATION = 'EDU'
-    CERTIFICATE = 'CRT'
-    TYPE_CHOICES = (
-        (EDUCATION, 'Education'),
-        (CERTIFICATE, 'Certificate')
-    )
-
-    name = models.CharField(max_length=64, null=False, blank=False)
-    title = models.CharField(max_length=255)
-    description = models.TextField()
-    period_start = models.DateField()
-    period_end = models.DateField(null=True, blank=True)
-    type = models.CharField(max_length=3, choices=TYPE_CHOICES, null=False, blank=False)  # TODO check choices
-
-
 class Career(AbstractActivity):
     # TODO should I have a relation with projects?
 
-    WORK = 'WORK'
-    OTHER = 'OTHER'
+    WORK = 'WRK'
+    EDUCATION = 'EDU'
+    CERTIFICATE = 'CRT'
+    OTHER = 'OTH'
     TYPE_CHOICES = (
         (WORK, 'Work'),
+        (EDUCATION, 'Education'),
+        (CERTIFICATE, 'Certificate'),
         (OTHER, 'Other')
     )
 
     name = models.CharField(max_length=64)
-    description = models.TextField()
+    description = models.TextField(max_length=255)
     start_date = models.DateField()
     end_date = models.DateField(null=True, blank=True)
-    type = models.CharField(max_length=5, choices=TYPE_CHOICES)
+    type = models.CharField(max_length=3, choices=TYPE_CHOICES)

@@ -3,7 +3,7 @@ from collections import OrderedDict
 from rest_framework_json_api import serializers
 from rest_framework_json_api.utils import get_resource_type_from_instance
 
-from backend.models import Project, Education, Event, Career
+from backend.models import Project, Event, Career
 
 
 class MediaListingSerializer(serializers.ResourceRelatedField):
@@ -36,12 +36,6 @@ class ProjectSerializer(BaseModelSerializer):
 class EventSerializer(BaseModelSerializer):
     class Meta:
         model = Event
-        fields = '__all__'
-
-
-class EducationSerializer(BaseModelSerializer):
-    class Meta:
-        model = Education
         fields = '__all__'
 
 

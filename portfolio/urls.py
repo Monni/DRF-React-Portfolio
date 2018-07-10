@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import include
 
-from backend.views import ProjectViewset, EventViewset, EducationViewset, CareerViewSet
+from backend.views import ProjectViewset, EventViewset, CareerViewSet
 from portfolio.utils.router import APIRouter
 
 router = APIRouter()
@@ -26,8 +26,6 @@ router.register('projects', ProjectViewset)
 #router.register('projects/(?P<project_pk>[0-9])/$', ProjectViewset, base_name='projects')
 
 router.register('events', EventViewset)
-
-router.register('education', EducationViewset)
 router.register('career', CareerViewSet)
 
 urlpatterns = [
