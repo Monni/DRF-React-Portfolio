@@ -2,6 +2,7 @@ import React from "react";
 import MainStyles from "./css/main.css";
 import styles from "./css/resume.css";
 import ResumeLoader from "./dataloaders/resume";
+import PageContentLoader from "./dataloaders/PageContent"
 import API from "./api/base";
 
 export default class Resume extends React.Component {
@@ -42,6 +43,10 @@ export default class Resume extends React.Component {
     render() {
         return (
             <div>
+
+                {/* Page Content */}
+                <PageContentLoader pageName='resume'/>
+
 
                 {/* Page Title */}
                 <section className={ MainStyles.module }>
