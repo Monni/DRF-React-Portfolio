@@ -47,20 +47,7 @@ export default class Resume extends React.Component {
                 {/* Page Content */}
                 <PageContentLoader pageName='resume'/>
 
-
-                {/* Page Title */}
-                <section className={ MainStyles.module }>
-                    <div className={ [MainStyles.container_fluid, MainStyles.container_custom].join(' ') }>
-                        <div className={ MainStyles.row }>
-                            <div className={ MainStyles.col_sm_12 }>
-                                <h1>Education & Work Experience.</h1>
-                                <p>Exercitation photo booth stumptown tote bag Banksy, elit small batch freegan sed. Craft beer elit
-                                    seitan exercitation, photo booth et 8-bit kale chips proident chillwave deep v laborum. Aliquip
-                                    veniam delectus, Marfa eiusmod Pinterest in do umami readymade swag.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                {/* TODO Handle this error gracefully */}
                 {!this.state.data.length > 0 && this.state.error && <p>I have failed in life. Or just an API error</p>}
 
                 {/* Education */}
