@@ -2,3 +2,4 @@ portfolio/secret_settings.py
 .idea/*
 db.sqlite3
 *.pyc
+frontend/node_modules/*
