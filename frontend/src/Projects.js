@@ -1,20 +1,37 @@
 import React, { Component } from "react";
- 
+import API from "./api";
+import PageContentLoader from "./dataloaders/PageContent";
+
+// TODO handle displaying error
 export default class Projects extends Component {
-  render() {
-    return (
-      <div>
-        <h2>Projects</h2>
-        <p>Mauris sem velit, vehicula eget sodales vitae,
-        rhoncus eget sapien:</p>
-        <ol>
-          <li>Nulla pulvinar diam</li>
-          <li>Facilisis bibendum</li>
-          <li>Vestibulum vulputate</li>
-          <li>Eget erat</li>
-          <li>Id porttitor</li>
-        </ol>
-      </div>
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            projects: [],
+            error: false
+        }
+    }
+
+    componentDidMount() {
+        API.get('projects').then(response => this.handleSuccess(response).bind(this)
+        ).catch(error => this.handleError(error).bind(this));
+    }
+
+    handleSuccess(response) {
+        this.setState({projects: response.data})
+    }
+
+    handleError(error) {
+        console.log(error);
+        this.setState({error: true});
+    }
+
+    render() {
+        return (
+            <div>
+                <PageContentLoader pageName='projects'/>
+            </div>
     );
   }
 };
