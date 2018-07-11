@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from "./api";
+import API from "./api/base";
 import PageContentLoader from "./dataloaders/PageContent";
 
 // TODO handle displaying error
