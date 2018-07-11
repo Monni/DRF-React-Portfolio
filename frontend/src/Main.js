@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import FontAwesome from "react-fontawesome";
 import { Route } from "react-router-dom";
 import Home from "./Home";
 import Resume from "./Resume";
 import Projects from "./Projects";
+import Footer from "./Footer";
 import MainStyles from "./css/main.css";
 import MainMenu from "./Menu.js";
 import ImageLoader from "./dataloaders/ImageLoader.js";
@@ -22,7 +22,7 @@ export default class Main extends Component {
 		return (
 			<div className={MainStyles.wrapper}>
 
-				{/*Large image on the left, split content. TODO check classNames.*/}
+				{/* Main Image. TODO check classNames.*/}
 				<div className={MainStyles.wrapper_split_image}>
 					<ImageLoader className={MainStyles.wrapper_split_image} imageUrl={this.state.imageUrl}/>
 				</div>
@@ -37,36 +37,7 @@ export default class Main extends Component {
 					</div>
 
 					{/* Footer */}
-					<footer className={ MainStyles.footer }>
-						<div className={ MainStyles.container_fluid +" "+ MainStyles.container_custom }>
-							<div className={ MainStyles.row }>
-
-								<div className={ MainStyles.col_md_7}>
-									<p>© 2018 Miika Avela. All rights reserved</p>
-								</div>
-
-								<div className={ MainStyles.col_md_5}>
-									<ul className={MainStyles.social_list}>
-										<li>
-											<a href="#">
-												<FontAwesome name="twitter"/>
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<FontAwesome name="facebook"/>
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<FontAwesome name="linkedin"/>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</footer>
+					<Footer/>
 				</div>
 			</div>
 
