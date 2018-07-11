@@ -22,22 +22,21 @@ export default class Main extends Component {
 		return (
 			<div className={MainStyles.wrapper}>
 
-				{/*Large image on the left, split content*/}
+				{/*Large image on the left, split content. TODO check classNames.*/}
 				<div className={MainStyles.wrapper_split_image}>
 					<ImageLoader className={MainStyles.wrapper_split_image} imageUrl={this.state.imageUrl}/>
 				</div>
 
-				{/*Content on the right, split content*/}
+				{/* Content */}
 				<div className={MainStyles.wrapper_split_content}>
-
 					<MainMenu/>
-
 					<div className="content">
 						<Route exact path="/" component={Home}/>
 						<Route path="/experience" component={Resume}/>
 						<Route path="/projects" component={Projects}/>
 					</div>
 
+					{/* Footer */}
 					<footer className={ MainStyles.footer }>
 						<div className={ MainStyles.container_fluid +" "+ MainStyles.container_custom }>
 							<div className={ MainStyles.row }>
