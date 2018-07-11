@@ -6,7 +6,7 @@ import Resume from "./Resume";
 import Projects from "./Projects";
 import MainStyles from "./css/main.css";
 import MainMenu from "./Menu.js";
-import ImageLoader from "./ImageLoader.js";
+import ImageLoader from "./dataloaders/ImageLoader.js";
 
  
 export default class Main extends Component {

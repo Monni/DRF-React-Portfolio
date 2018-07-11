@@ -1,8 +1,8 @@
 import React from "react";
-import Spinner from "./Spinner";
-import { spinnerService } from "./services/spinner.service";
-import loadingGif from "./img/loader.gif";
-import styles from "./css/imageloader.css";
+import Spinner from "../Spinner";
+import { spinnerService } from "../services/spinner.service";
+import loadingGif from "../img/loader.gif";
+import styles from "../css/imageloader.css";
 
 
 export default class ImageLoader extends React.Component {
