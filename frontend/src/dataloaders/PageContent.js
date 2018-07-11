@@ -1,5 +1,5 @@
 import React from "react";
-import API from "../api/base";
+import API from "../api/Base";
 import MainStyles from "../css/main.css";
 
 export default class PageContentLoader extends React.Component {

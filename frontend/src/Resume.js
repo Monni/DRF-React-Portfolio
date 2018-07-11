@@ -3,7 +3,7 @@ import MainStyles from "./css/main.css";
 import styles from "./css/resume.css";
 import ResumeLoader from "./dataloaders/resume";
 import PageContentLoader from "./dataloaders/PageContent"
-import API from "./api/base";
+import API from "./api/Base";
 
 export default class Resume extends React.Component {
 

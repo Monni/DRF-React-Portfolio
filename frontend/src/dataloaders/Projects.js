@@ -1,5 +1,5 @@
 import React from "react";
-import API from "../api/base";
+import API from "../api/Base";
 
 export default class ProjectsLoader extends React.Component {
 
