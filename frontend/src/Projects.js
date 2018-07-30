@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PageContentLoader from "./dataloaders/PageContent";
+import PageLoader from "./dataloaders/PageLoader";
 import ProjectsLoader from "./dataloaders/Projects";
 
 // TODO handle displaying error
@@ -7,7 +7,7 @@ export default class Projects extends Component {
     render() {
         return (
             <div>
-                <PageContentLoader pageName='projects'/>
+                <PageLoader pageName='projects'/>
                 <ProjectsLoader/>
             </div>
     );

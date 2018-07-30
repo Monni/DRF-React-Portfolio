@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import PageContentLoader from "./dataloaders/PageContent";
+import PageLoader from "./dataloaders/PageLoader";
 
 export default class Home extends Component {
     render() {
         return (
             <div>
-                <PageContentLoader pageName="home"/>
+                <PageLoader pageName="home"/>
             </div>
         );
     }

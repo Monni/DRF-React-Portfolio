@@ -1,4 +1,5 @@
 import React from "react";
+import FontAwesome from "react-fontawesome";
 import MainStyles from "./css/main.css";
 
 export default class Footer extends React.Component {

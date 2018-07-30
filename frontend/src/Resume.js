@@ -2,7 +2,7 @@ import React from "react";
 import MainStyles from "./css/main.css";
 import styles from "./css/resume.css";
 import ResumeLoader from "./dataloaders/resume";
-import PageContentLoader from "./dataloaders/PageContent"
+import PageLoader from "./dataloaders/PageLoader"
 import API from "./api/Base";
 
 export default class Resume extends React.Component {
@@ -16,12 +16,13 @@ export default class Resume extends React.Component {
             CRT: [],
             OTH: [],
             error: false
-        }
+        };
+        this.handleSuccess.bind(this);
     }
     // TODO check initial states. Looks oddish.
 
     componentDidMount(){
-        API.get('career').then(response => this.handleSuccess(response).bind(this)
+        API.get('career').then(response => this.handleSuccess(response)
         ).catch(error => this.handleError(error).bind(this))
     }
 
@@ -32,7 +33,7 @@ export default class Resume extends React.Component {
             let dataArray = this.state[data.type].slice();
             dataArray.push(data);
             this.setState({ [data.type]: dataArray});
-        })
+        });
     }
 
     handleError(error) {
@@ -45,16 +46,16 @@ export default class Resume extends React.Component {
             <div>
 
                 {/* Page Content */}
-                <PageContentLoader pageName='resume'/>
+                <PageLoader pageName='resume'/>
 
                 {/* TODO Handle this error gracefully */}
-                {!this.state.data.length > 0 && this.state.error && <p>I have failed in life. Or just an API error</p>}
+                {this.state.error && <p>I have failed in life. Or just an API error</p>}
 
                 {/* Education */}
-                <ResumeLoader data={ this.state.EDU }/>
+                <ResumeLoader data={ this.state.EDU } title={ 'education' }/>
 
                 {/* Work Experience */}
-                <ResumeLoader data={ this.state.WRK }/>
+                <ResumeLoader data={ this.state.WRK } title={ 'work' }/>
 
                 {/* TODO here fetch skills as buzzwords from LinkedIn. (Or DB? Do I need a table for that?) */}
                 <section className={ MainStyles.module }>

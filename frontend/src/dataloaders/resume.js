@@ -4,10 +4,6 @@ import styles from "../css/resume.css";
 
 export default class ResumeLoader extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     formatTitle(str){
         return str.charAt(0).toUpperCase() + str.slice(1) + '.';
     }
@@ -23,7 +19,7 @@ export default class ResumeLoader extends React.Component {
                 <div className={ [MainStyles.container_fluid, MainStyles.container_custom].join(' ')}>
                     <div className={ MainStyles.row }>
                         <div className={ MainStyles.col_sm_4 }>
-                            <h6>{ this.state.data && this.formatTitle(title) }</h6>
+                            <h6>{ data.length > 0 && this.formatTitle(title) }</h6>
                         </div>
 
                         <div className={ MainStyles.col_sm_8 }>
@@ -31,7 +27,7 @@ export default class ResumeLoader extends React.Component {
                                 {data.map(((data, index) =>
                                         <li key={index}>
                                             <h6 className={ styles.resumeTitle }>{data.name}</h6>
-                                            <h6 className={ styles.resumeMeta }>{ data.period_start } - { data.period_end }</h6>
+                                            <h6 className={ styles.resumeMeta }>{ data.start_date } - { data.end_date }</h6>
                                             <p>{data.description}</p>
                                         </li>
                                 ))}
