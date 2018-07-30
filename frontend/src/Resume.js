@@ -4,6 +4,7 @@ import styles from "./css/resume.css";
 import ResumeLoader from "./dataloaders/resume";
 import PageLoader from "./dataloaders/PageLoader"
 import API from "./api/Base";
+import { groupBy } from "lodash";
 
 export default class Resume extends React.Component {
 
@@ -11,29 +12,30 @@ export default class Resume extends React.Component {
         super(props);
         this.state = {
             response: [],
-            WRK: [],
-            EDU: [],
-            CRT: [],
-            OTH: [],
+            work: [],
+            education: [],
+            certificates: [],
+            other: [],
             error: false
         };
         this.handleSuccess.bind(this);
+        this.handleError.bind(this);
     }
     // TODO check initial states. Looks oddish.
 
     componentDidMount(){
         API.get('career').then(response => this.handleSuccess(response)
-        ).catch(error => this.handleError(error).bind(this))
+        ).catch(error => this.handleError(error))
     }
 
     handleSuccess(response) {
-        console.log(response);
-        this.setState({ response: response });
-        response.data.map(data => {
+        console.log(groupBy(response.data, 'type'));
+        this.setState({ response: groupBy(response.data, 'type') });
+        /*response.data.map(data => {
             let dataArray = this.state[data.type].slice();
             dataArray.push(data);
             this.setState({ [data.type]: dataArray});
-        });
+        });*/
     }
 
     handleError(error) {
@@ -44,18 +46,16 @@ export default class Resume extends React.Component {
     render() {
         return (
             <div>
+                {/* TODO Handle this error gracefully */}
+                {this.state.error && <p>I have failed in life. Or just an API error</p>}
 
                 {/* Page Content */}
                 <PageLoader pageName='resume'/>
 
-                {/* TODO Handle this error gracefully */}
-                {this.state.error && <p>I have failed in life. Or just an API error</p>}
-
-                {/* Education */}
-                <ResumeLoader data={ this.state.EDU } title={ 'education' }/>
-
-                {/* Work Experience */}
-                <ResumeLoader data={ this.state.WRK } title={ 'work' }/>
+                {/* Experience */}
+                { Object.keys(this.state.response).map(category => (
+                    <ResumeLoader data={this.state.response[category]} title={category}/>
+                ))}
 
                 {/* TODO here fetch skills as buzzwords from LinkedIn. (Or DB? Do I need a table for that?) */}
                 <section className={ MainStyles.module }>

@@ -9,10 +9,13 @@ export default class ResumeLoader extends React.Component {
     }
 
     render() {
+        console.log('asd');
         const {
             title,
             data
         } = this.props;
+        console.log(data);
+        console.log(title);
 
         return (
             <section className={ MainStyles.module }>

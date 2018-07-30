@@ -77,10 +77,10 @@ class Project(AbstractActivity):
 class Career(AbstractActivity):
     # TODO should I have a relation with projects?
 
-    WORK = 'WRK'
-    EDUCATION = 'EDU'
-    CERTIFICATE = 'CRT'
-    OTHER = 'OTH'
+    WORK = 'work'
+    EDUCATION = 'education'
+    CERTIFICATE = 'certificates'
+    OTHER = 'other'
     TYPE_CHOICES = (
         (WORK, 'Work'),
         (EDUCATION, 'Education'),
@@ -92,7 +92,10 @@ class Career(AbstractActivity):
     description = models.TextField(max_length=255)
     start_date = models.DateField()
     end_date = models.DateField(null=True, blank=True)
-    type = models.CharField(max_length=3, choices=TYPE_CHOICES)
+    type = models.CharField(max_length=12, choices=TYPE_CHOICES)
+
+    def __str__(self):
+        return '{} ({})'.format(self.name, self.type)
 
 
 class PageHeader(models.Model):
@@ -134,7 +137,7 @@ class Page(models.Model):
 
     page_name = models.CharField(max_length=10, choices=PAGE_NAME_CHOICES, null=True)
     header = models.ForeignKey(PageHeader, on_delete=models.CASCADE, related_name='page')
-    content = models.ManyToManyField(PageContent, related_name='page')
+    content = models.ManyToManyField(PageContent, related_name='page', blank=True)
 
     def __str__(self):
         return self.page_name

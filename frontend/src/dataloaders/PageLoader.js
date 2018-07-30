@@ -9,13 +9,15 @@ export default class PageLoader extends React.Component {
         this.state = {
             error: false,
             response: {}
-        }
+        };
+        this.handleSuccess.bind(this);
+        this.handleError.bind(this);
     }
 
     componentDidMount() {
         const { pageName } = this.props;
-        API.get('pages/' + pageName.toUpperCase()).then(response => this.handleSuccess(response).bind(this)
-        ).catch(error => this.handleError(error).bind(this))
+        API.get('pages/' + pageName.toUpperCase()).then(response => this.handleSuccess(response)
+        ).catch(error => this.handleError(error))
     }
 
     handleSuccess(response) {
