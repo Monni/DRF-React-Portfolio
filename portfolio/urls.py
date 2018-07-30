@@ -17,17 +17,17 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import include
 
-from backend.views import ProjectViewset, EventViewset, CareerViewSet, PageContentViewSet
+from backend.views import ProjectViewset, EventViewset, CareerViewSet, PageViewSet, ImageViewSet
 from portfolio.utils.router import APIRouter
 
 router = APIRouter()
 
 router.register('projects', ProjectViewset)
-#router.register('projects/(?P<project_pk>[0-9])/$', ProjectViewset, base_name='projects')
-
 router.register('events', EventViewset)
 router.register('career', CareerViewSet)
-router.register('content(?:/(?P<page_name>[a-zA-Z]+)/)?', PageContentViewSet, base_name='pagecontent')
+router.register('pages', PageViewSet)
+
+router.register('images', ImageViewSet)
 
 urlpatterns = [
     url('admin/', admin.site.urls),

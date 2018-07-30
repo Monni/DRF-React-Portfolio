@@ -95,27 +95,46 @@ class Career(AbstractActivity):
     type = models.CharField(max_length=3, choices=TYPE_CHOICES)
 
 
-# TODO Probably need to add relationships to images at least. If, serializer update needed.
-class PageContent(models.Model):
+class PageHeader(models.Model):
+    title = models.CharField(max_length=255)
+    content = models.TextField(max_length=65535)
+    image = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='page_header')
 
-    HOME = 'HOME',
+    def __str__(self):
+        return self.title
+
+
+class PageContent(models.Model):
+    title = models.CharField(max_length=255)  # 256 Bytes
+    content = models.TextField(max_length=65535)  # 64 Kilobytes
+    display_order = models.IntegerField()
+    images = GenericRelation(Image)
+    documents = GenericRelation(Document)
+
+    @property
+    def media(self):
+        return sorted(
+            chain(self.images.get_queryset(), self.documents.get_queryset()),
+            key=lambda media: media.date, reverse=False)
+
+    def __str__(self):
+        return self.title
+
+
+class Page(models.Model):
+
+    HOME = 'HOME'
     RESUME = 'RESUME'
     PROJECTS = 'PROJECTS'
     PAGE_NAME_CHOICES = (
         (HOME, 'Home'),
-        (RESUME, 'Title'),
+        (RESUME, 'Resume'),
         (PROJECTS, 'Projects')
     )
 
-    CONTENT = 'CONTENT'
-    TITLE = 'TITLE'
-    TYPE_CHOICES = (
-        (CONTENT, 'Content'),
-        (TITLE, 'Title')
-    )
+    page_name = models.CharField(max_length=10, choices=PAGE_NAME_CHOICES, null=True)
+    header = models.ForeignKey(PageHeader, on_delete=models.CASCADE, related_name='page')
+    content = models.ManyToManyField(PageContent, related_name='page')
 
-    page_name = models.CharField(max_length=9, choices=PAGE_NAME_CHOICES, null=True)
-    title = models.CharField(max_length=255)  # 256 Bytes
-    content = models.TextField(max_length=65535)  # 64 Kilobytes
-    type = models.CharField(max_length=10, choices=TYPE_CHOICES)
-    display_order = models.IntegerField()
+    def __str__(self):
+        return self.page_name

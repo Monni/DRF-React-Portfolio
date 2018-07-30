@@ -3,7 +3,7 @@ from collections import OrderedDict
 from rest_framework_json_api import serializers
 from rest_framework_json_api.utils import get_resource_type_from_instance
 
-from backend.models import Project, Event, Career, PageContent
+from backend.models import Project, Event, Career, Page, PageHeader, PageContent, Image
 
 
 class MediaListingSerializer(serializers.ResourceRelatedField):
@@ -45,7 +45,32 @@ class CareerSerializer(BaseModelSerializer):
         fields = '__all__'
 
 
-class PageContentSerializer(serializers.HyperlinkedModelSerializer):
+class PageHeaderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PageHeader
+        exclude = ('id',)
+
+    image = serializers.HyperlinkedIdentityField(read_only=True, view_name='image-detail')
+
+
+class PageContentSerializer(serializers.ModelSerializer):
     class Meta:
         model = PageContent
+        exclude = ('id',)
+
+    media = MediaListingSerializer(many=True, read_only=True)
+
+
+class PageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Page
+        exclude = ('id',)
+
+    header = PageHeaderSerializer()
+    content = PageContentSerializer(many=True)
+
+
+class ImageSerializer(BaseModelSerializer):
+    class Meta:
+        model = Image
         fields = '__all__'

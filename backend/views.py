@@ -1,24 +1,12 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.utils.functional import cached_property
 from rest_framework import viewsets
-from rest_framework.exceptions import ValidationError
 
-from backend.models import Project, Event, Career, PageContent
-from backend.serializers import ProjectSerializer, EventSerializer, CareerSerializer, PageContentSerializer
+from backend.models import Project, Event, Career, Page, Image
+from backend.serializers import ProjectSerializer, EventSerializer, CareerSerializer, PageSerializer, ImageSerializer
 
 
 class ProjectViewset(viewsets.ModelViewSet):
     serializer_class = ProjectSerializer
     queryset = Project.objects
-    #def get_queryset(self):
-    #    if hasattr(self.kwargs, 'project_pk'):
-    #        try:
-    #            return Project.objects.get(pk=self.kwargs['project_pk'])
-    #        except Project.DoesNotExist:
-    #            raise ValidationError(detail='Project not found.')
-    #    return Project.objects
 
 
 class EventViewset(viewsets.ModelViewSet):
@@ -31,10 +19,12 @@ class CareerViewSet(viewsets.ModelViewSet):
     serializer_class = CareerSerializer
 
 
-class PageContentViewSet(viewsets.ModelViewSet):
-    serializer_class = PageContentSerializer
+class PageViewSet(viewsets.ModelViewSet):
+    queryset = Page.objects
+    lookup_field = "page_name"
+    serializer_class = PageSerializer
 
-    def get_queryset(self):
-        if self.kwargs.get('page_name'):
-            return PageContent.objects.filter(page_name=self.kwargs['page_name'])
-        return PageContent.objects
+
+class ImageViewSet(viewsets.ModelViewSet):
+    queryset = Image.objects
+    serializer_class = ImageSerializer
