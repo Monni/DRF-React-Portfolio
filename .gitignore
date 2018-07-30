@@ -3,3 +3,4 @@ portfolio/secret_settings.py
 db.sqlite3
 *.pyc
 frontend/node_modules/*
+uploads/*
