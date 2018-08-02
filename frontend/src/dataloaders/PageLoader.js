@@ -12,6 +12,7 @@ export default class PageLoader extends React.Component {
         };
         this.handleSuccess.bind(this);
         this.handleError.bind(this);
+        this.handleSplitImageChange.bind(this);
     }
 
     componentDidMount() {
@@ -24,11 +25,20 @@ export default class PageLoader extends React.Component {
         console.log(response);
         this.setState({ response: response.data });
         document.title = "Miika Avela - " + response.data.page_name.charAt(0) + response.data.page_name.slice(1).toLowerCase();
+        if ('header' in response.data) {
+            this.handleSplitImageChange(response.data.header)
+        }
     }
 
     handleError(error) {
         console.log(error);
         this.setState({error: true});
+    }
+
+    handleSplitImageChange(header) {
+        if ('image' in header) {
+            this.props.onSplitImageChange(header.image);
+        }
     }
 
     render() {

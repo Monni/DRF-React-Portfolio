@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Route } from "react-router-dom";
 import Home from "./Home";
 import Resume from "./Resume";
@@ -9,13 +9,17 @@ import MainMenu from "./Menu.js";
 import ImageLoader from "./dataloaders/ImageLoader.js";
 
  
-export default class Main extends Component {
+export default class Main extends React.Component {
 
     constructor(props, context) {
         super(props, context);
         this.state = {
             imageUrl: null
         };
+    }
+
+    handleSplitImageChange(imageUrl) {
+    	this.setState({ imageUrl: imageUrl });
     }
 
 	render() {
@@ -31,7 +35,10 @@ export default class Main extends Component {
 				<div className={MainStyles.wrapper_split_content}>
 					<MainMenu/>
 					<div className="content">
-						<Route exact path="/" component={Home}/>
+						<Route
+							exact path="/"
+							render={ (props) => <Home {...props} onSplitImageChange={this.handleSplitImageChange.bind(this)}/> }
+						/>
 						<Route path="/experience" component={Resume}/>
 						<Route path="/projects" component={Projects}/>
 					</div>
