@@ -4,3 +4,4 @@ djangorestframework_jsonapi==2.4.0
 Pillow==5.1.0
 markdown==2.6.11
 django-cors-headers==2.3.0
+gunicorn==19.9.0
