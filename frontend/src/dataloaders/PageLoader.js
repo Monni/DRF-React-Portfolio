@@ -52,9 +52,6 @@ export default class PageLoader extends React.Component {
                                         Whoops.
                                     </h1>
                                     <p>
-                                        I have failed in life. Or just an API error I'm probably not aware of.
-                                    </p>
-                                    <p>
                                         {this.state.error.toString()}
                                     </p>
                                 </div>
