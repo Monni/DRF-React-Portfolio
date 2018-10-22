@@ -64,16 +64,24 @@ export default class ResumeLoader extends React.Component {
                         <div className={ [MainStyles.container_fluid, MainStyles.container_custom].join(' ')}>
                             <div className={ MainStyles.row }>
                                 <div className={ MainStyles.col_sm_4 }>
-                                    <h6>{ this.state.response[category].length > 0 && this.formatTitle(category) }</h6>
+                                    <h6>
+                                        { this.state.response[category].length > 0 && this.formatTitle(category) }
+                                    </h6>
                                 </div>
 
                                 <div className={ MainStyles.col_sm_8 }>
                                     <ul className={ styles.resumeInfo }>
                                         {this.state.response[category].map(((data, index) =>
                                             <li key={index}>
-                                                <h6 className={ styles.resumeTitle }>{data.name}</h6>
-                                                <h6 className={ styles.resumeMeta }>{ data.start_date } - { data.end_date }</h6>
-                                                <p>{data.description}</p>
+                                                <h6 className={ styles.resumeTitle }>
+                                                    {data.name}
+                                                </h6>
+                                                <h6 className={ styles.resumeMeta }>
+                                                    { data.location }, { data.start_date } - { data.end_date }
+                                                </h6>
+                                                <p>
+                                                    {data.description}
+                                                </p>
                                             </li>
                                         ))}
                                     </ul>
