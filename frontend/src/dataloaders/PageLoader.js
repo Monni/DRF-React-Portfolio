@@ -31,8 +31,7 @@ export default class PageLoader extends React.Component {
     }
 
     handleError(error) {
-        console.log(error);
-        this.setState({error: true});
+        this.setState({error: error});
     }
 
     handleSplitImageChange(header) {
@@ -42,6 +41,29 @@ export default class PageLoader extends React.Component {
     }
 
     render() {
+        if (this.state.error) {
+            return(
+                <div>
+                    <section className={ MainStyles.module }>
+                        <div className={ [MainStyles.container_fluid, MainStyles.container_custom].join(' ') }>
+                            <div className={ MainStyles.row }>
+                                <div className={ MainStyles.col_sm_12}>
+                                    <h1>
+                                        Whoops.
+                                    </h1>
+                                    <p>
+                                        I have failed in life. Or just an API error I'm probably not aware of.
+                                    </p>
+                                    <p>
+                                        {this.state.error.toString()}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            )
+        }
         return (
             <div>
                 {this.state.response.header &&

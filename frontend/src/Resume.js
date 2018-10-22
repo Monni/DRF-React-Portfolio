@@ -28,6 +28,7 @@ export default class Resume extends React.Component {
     }
 
     componentDidMount(){
+        // TODO need to create CareerLoader and parse errors there. This component only to utilise loaders
         API.get('career').then(response => this.handleSuccess(response)
         ).catch(error => this.handleError(error))
     }
