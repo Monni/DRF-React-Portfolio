@@ -39,7 +39,10 @@ export default class Main extends React.Component {
 							exact path="/"
 							render={ (props) => <Home {...props} onSplitImageChange={this.handleSplitImageChange.bind(this)}/> }
 						/>
-						<Route path="/experience" component={Resume}/>
+						<Route
+							path="/experience"
+							render={ (props) => <Resume {...props} onSplitImageChange={this.handleSplitImageChange.bind(this)}/>}
+						/>
 						<Route path="/projects" component={Projects}/>
 					</div>
 

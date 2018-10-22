@@ -23,6 +23,10 @@ export default class Resume extends React.Component {
     }
     // TODO check initial states. Looks oddish.
 
+    handleSplitImageChange(image) {
+        this.props.onSplitImageChange(image);
+    }
+
     componentDidMount(){
         API.get('career').then(response => this.handleSuccess(response)
         ).catch(error => this.handleError(error))
@@ -50,7 +54,7 @@ export default class Resume extends React.Component {
                 {this.state.error && <p>I have failed in life. Or just an API error</p>}
 
                 {/* Page Content */}
-                <PageLoader pageName='resume'/>
+                <PageLoader pageName='resume' onSplitImageChange={this.handleSplitImageChange.bind(this)}/>
 
                 {/* Experience */}
                 { Object.keys(this.state.response).map(category => (
