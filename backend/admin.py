@@ -4,7 +4,7 @@ from django.contrib import admin
 from backend.models import Project, Event, Document, Image, Tag, Career, PageContent, Page, PageHeader
 
 
-class PageHeaderAdmin(admin.ModelAdmin):
+class PageContextAdmin(admin.ModelAdmin):
     list_display = ['title', 'pages']
 
     @staticmethod
@@ -22,5 +22,5 @@ admin.site.register(Image)
 admin.site.register(Tag)
 admin.site.register(Career)
 admin.site.register(Page)
-admin.site.register(PageContent)
-admin.site.register(PageHeader, PageHeaderAdmin)
+admin.site.register(PageContent, PageContextAdmin)
+admin.site.register(PageHeader, PageContextAdmin)
