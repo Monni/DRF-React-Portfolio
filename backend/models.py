@@ -16,25 +16,27 @@ class Tag(models.Model):
         return self.name
 
 
-class Media(models.Model):
-    # TODO this is supposed to be abstract. AbstractMedia ?
+class AbstractMedia(models.Model):
     tags = GenericRelation(Tag)
     date = models.DateTimeField(auto_now_add=True)
 
     # Below the mandatory fields for generic relation
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, null=True)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey()
 
+    class Meta:
+        abstract = True
 
-class Image(Media):
+
+class Image(AbstractMedia):
     file = models.ImageField(upload_to='uploads/images',
                              max_length=255,
                              null=True,
                              validators=[validate_image_file_extension])
 
 
-class Document(Media):
+class Document(AbstractMedia):
     file = models.FileField(upload_to='uploads/documents',
                             max_length=255,
                             null=False,
