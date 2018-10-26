@@ -1,5 +1,5 @@
 import React from "react";
-import Spinner from "../Spinner";
+import Spinner from "../utils/Spinner";
 import { spinnerService } from "../services/spinner.service";
 import loadingGif from "../img/loader.gif";
 import styles from "../css/imageloader.css";

@@ -1,5 +1,5 @@
 import React from "react";
-import { spinnerService } from './services/spinner.service';
+import { spinnerService } from '../services/spinner.service';
 
 export default class Spinner extends React.Component {
 

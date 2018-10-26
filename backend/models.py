@@ -17,6 +17,7 @@ class Tag(models.Model):
 
 
 class Media(models.Model):
+    # TODO this is supposed to be abstract. AbstractMedia ?
     tags = GenericRelation(Tag)
     date = models.DateTimeField(auto_now_add=True)
 

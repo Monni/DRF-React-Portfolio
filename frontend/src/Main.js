@@ -5,7 +5,7 @@ import Resume from "./Resume";
 import Projects from "./Projects";
 import Footer from "./Footer";
 import MainStyles from "./css/main.css";
-import MainMenu from "./Menu.js";
+import MainMenu from "./utils/Menu.js";
 import ImageLoader from "./dataloaders/ImageLoader.js";
 
  

@@ -26,6 +26,7 @@ export default class Resume extends React.Component {
                 <ResumeLoader/>
 
                 {/* TODO here fetch skills as buzzwords from LinkedIn. (Or DB? Do I need a table for that?) */}
+                {/* Suggested flow: make a call to backend, which in turn calls for LinkedIn API and caches the result for a day or some. */}
                 <section className={ MainStyles.module }>
                     <div className={ [MainStyles.container_fluid, MainStyles.container_custom].join(' ') }>
                         <div className={ MainStyles.row }>
