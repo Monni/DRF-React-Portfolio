@@ -81,7 +81,6 @@ class Migration(migrations.Migration):
                 ('media_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='backend.Media')),
                 ('file', models.FileField(max_length=255, upload_to='uploads/documents', validators=[django.core.validators.FileExtensionValidator(allowed_extensions=['pdf'])])),
             ],
-            bases=('backend.media',),
         ),
         migrations.CreateModel(
             name='Image',
@@ -89,7 +88,6 @@ class Migration(migrations.Migration):
                 ('media_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='backend.Media')),
                 ('file', models.ImageField(max_length=255, null=True, upload_to='uploads/images', validators=[django.core.validators.FileExtensionValidator(allowed_extensions=['blp', 'bmp', 'bufr', 'cur', 'pcx', 'dcx', 'dds', 'ps', 'eps', 'fit', 'fits', 'fli', 'flc', 'ftc', 'ftu', 'gbr', 'gif', 'grib', 'h5', 'hdf', 'png', 'jp2', 'j2k', 'jpc', 'jpf', 'jpx', 'j2c', 'icns', 'ico', 'im', 'iim', 'tif', 'tiff', 'jfif', 'jpe', 'jpg', 'jpeg', 'mpg', 'mpeg', 'mpo', 'msp', 'palm', 'pcd', 'pdf', 'pxr', 'pbm', 'pgm', 'ppm', 'psd', 'bw', 'rgb', 'rgba', 'sgi', 'ras', 'tga', 'webp', 'wmf', 'emf', 'xbm', 'xpm'])])),
             ],
-            bases=('backend.media',),
         ),
         migrations.AddField(
             model_name='media',
