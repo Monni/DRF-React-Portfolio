@@ -8,6 +8,8 @@ from django.db import models
 
 class Tag(models.Model):
     name = models.CharField(max_length=64)
+
+    # Mandatory fields for generic relation
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, related_name='tags')
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
@@ -19,8 +21,9 @@ class Tag(models.Model):
 class AbstractMedia(models.Model):
     tags = GenericRelation(Tag)
     date = models.DateTimeField(auto_now_add=True)
+    description = models.CharField(max_length=255, null=True)
 
-    # Below the mandatory fields for generic relation
+    # Mandatory fields for generic relation
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, null=True)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey()
@@ -36,6 +39,11 @@ class Image(AbstractMedia):
                              validators=[validate_image_file_extension])
 
 
+class Video(AbstractMedia):
+    file = models.URLField(max_length=255,
+                           null=False)
+
+
 class Document(AbstractMedia):
     file = models.FileField(upload_to='uploads/documents',
                             max_length=255,
@@ -44,10 +52,10 @@ class Document(AbstractMedia):
 
 
 class AbstractActivity(models.Model):
-    # TODO video
     location = models.CharField(max_length=64)
     tags = GenericRelation(Tag)
     images = GenericRelation(Image)
+    videos = GenericRelation(Video)
     documents = GenericRelation(Document)
 
     class Meta:
@@ -56,7 +64,7 @@ class AbstractActivity(models.Model):
     @property
     def media(self):
         return sorted(
-            chain(self.images.get_queryset(), self.documents.get_queryset()),
+            chain(self.images.get_queryset(), self.documents.get_queryset(), self.videos.get_queryset()),
             key=lambda media: media.date, reverse=False)
 
 
@@ -78,7 +86,7 @@ class Project(AbstractActivity):
 
 
 class Career(AbstractActivity):
-    # TODO should I have a relation with projects?
+    # TODO relation with projects. Not top priority.
 
     WORK = 'work'
     EDUCATION = 'education'
@@ -102,6 +110,11 @@ class Career(AbstractActivity):
 
 
 class PageHeader(models.Model):
+    """
+    TODO: Page header looks similar to page content in front.
+    Maybe use title only in document title and remove field content
+    along with positioning on top of page content in UI.
+    """
     title = models.CharField(max_length=255)
     content = models.TextField(max_length=65535)
     image = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='page_header')
