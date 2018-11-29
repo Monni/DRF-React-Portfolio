@@ -50,7 +50,8 @@ class PageHeaderSerializer(serializers.ModelSerializer):
         model = PageHeader
         exclude = ('id',)
 
-    image = serializers.HyperlinkedIdentityField(read_only=True, view_name='image-detail')
+    image = serializers.HyperlinkedIdentityField(read_only=True,
+                                                 view_name='image-detail')
 
 
 class PageContentSerializer(serializers.ModelSerializer):
@@ -66,8 +67,8 @@ class PageSerializer(serializers.ModelSerializer):
         model = Page
         exclude = ('id',)
 
-    header = PageHeaderSerializer()
-    content = PageContentSerializer(many=True)
+    header = PageHeaderSerializer(read_only=True)
+    content = PageContentSerializer(read_only=True, many=True)
 
 
 class ImageSerializer(serializers.ModelSerializer):

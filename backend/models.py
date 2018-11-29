@@ -140,7 +140,9 @@ class PageHeader(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField(max_length=65535)
     image = GenericRelation(Image, on_delete=models.CASCADE)
-    page = models.OneToOneField(Page, on_delete=models.CASCADE)
+    page = models.OneToOneField(Page,
+                                on_delete=models.CASCADE,
+                                related_name='header')
 
     def __str__(self):
         return self.title
@@ -152,7 +154,9 @@ class PageContent(models.Model):
     display_order = models.IntegerField()
     images = GenericRelation(Image)
     documents = GenericRelation(Document)
-    page = models.ForeignKey(Page, on_delete=models.CASCADE)
+    page = models.ForeignKey(Page,
+                             on_delete=models.CASCADE,
+                             related_name='content')
 
     @property
     def media(self):
