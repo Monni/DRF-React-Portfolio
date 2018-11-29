@@ -31,6 +31,9 @@ class AbstractMedia(models.Model):
     class Meta:
         abstract = True
 
+    def __str__(self):
+        return self.description
+
 
 class Image(AbstractMedia):
     file = models.ImageField(upload_to='uploads/images',
