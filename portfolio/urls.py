@@ -32,4 +32,5 @@ router.register('images', ImageViewSet)
 urlpatterns = [
     url('admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),
+    url(r'^nested_admin/', include('nested_admin.urls'))
 ]
