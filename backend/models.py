@@ -120,7 +120,7 @@ class PageHeader(models.Model):
     """
     title = models.CharField(max_length=255)
     content = models.TextField(max_length=65535)
-    image = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='page_header')
+    image = GenericRelation(Image, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
