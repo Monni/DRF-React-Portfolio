@@ -85,7 +85,7 @@ class Project(AbstractActivity):
     name = models.CharField(max_length=64)
     title = models.CharField(max_length=255)
     description = models.TextField()
-    events = models.ManyToManyField(Event, related_name='projects')
+    events = models.ManyToManyField(Event, null=True, related_name='projects')
 
 
 class Career(AbstractActivity):
