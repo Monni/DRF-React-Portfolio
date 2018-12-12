@@ -6,9 +6,11 @@ export default class ProjectsLoader extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: [],
+            response: [],
             error: false
-        }
+        };
+        this.handleSuccess.bind(this);
+        this.handleError.bind(this);
     }
 
     componentDidMount() {
@@ -17,7 +19,7 @@ export default class ProjectsLoader extends React.Component {
     }
 
     handleSuccess(response) {
-        this.setState({data: response.data})
+        this.setState({data: response.data});
     }
 
     handleError(error) {

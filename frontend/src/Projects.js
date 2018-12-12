@@ -2,12 +2,24 @@ import React, { Component } from "react";
 import PageLoader from "./dataloaders/PageLoader";
 import ProjectsLoader from "./dataloaders/Projects";
 
-// TODO handle displaying error
 export default class Projects extends Component {
+
+     constructor(props) {
+        super(props);
+    }
+
+    handleSplitImageChange(image) {
+        this.props.onSplitImageChange(image);
+    }
+
     render() {
         return (
             <div>
-                <PageLoader pageName='projects'/>
+
+                {/* Page Content */}
+                <PageLoader pageName='projects' onSplitImageChange={this.handleSplitImageChange.bind(this)}/>
+
+                {/* Grid for all projects */}
                 <ProjectsLoader/>
             </div>
     );
